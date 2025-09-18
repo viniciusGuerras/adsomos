@@ -5,9 +5,9 @@
         </div>
         <ul class="navbar-ul">
             <li><a href="index.html">HOME</a></li>
-            <li><a href="shop.html">SHOP</a></li>
-            <li><a href="about.html">ABOUT</a></li>
-            <li><a href="contact.html">CONTACT</a></li>
+            <li><a href="shop.html">LOJA</a></li>
+            <li><a href="about.php">SOBRE</a></li>
+            <li><a href="contact.html">CONTATO</a></li>
         </ul>
         <div class="navbar-hamburger">
             Ham

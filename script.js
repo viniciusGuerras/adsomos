@@ -15,7 +15,21 @@ const contents = document.querySelectorAll('.tab-content');
 
 const selectedColor = document.getElementById('selected-color');
 
-tabs.forEach(tab => {
+const maxQuantity = 20;
+const quantityCounter = document.getElementById('quantity');
+
+for(let i = 0; i < maxQuantity; i++){
+    const opt = document.createElement('option');
+    opt.value = i;
+    opt.textContent = i
+    quantityCounter.appendChild(opt);
+}
+
+tabs.forEach((tab, idx) => {
+    if (idx == 0) {
+        tab.classList.add('active');
+        contents[0].classList.remove('toggled-hidden');
+    };
     tab.addEventListener('click', () => {
         tabs.forEach(t => t.classList.remove('active'));
         tab.classList.add('active');
@@ -26,6 +40,7 @@ tabs.forEach(tab => {
         const targetContent = document.getElementById(targetId);
         if (targetContent) targetContent.classList.remove('toggled-hidden');
     });
+
 });
 
 thumbs.forEach(thumb => {
@@ -50,7 +65,7 @@ colors.forEach(([name, hex], idx) => {
 
     label.appendChild(input);
     colorOptionsDiv.appendChild(label);
-    
+
     if (idx === 0) {
         selectedColor.innerHTML = name;
         label.classList.add('selected');

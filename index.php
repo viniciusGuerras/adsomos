@@ -5,7 +5,9 @@
     "teste.jpg",
     "nokia.jpg",
     "xiaomi.jpeg",
-    "samsung.jpeg"
+    "samsung.jpeg",
+    "cell.jpeg",
+    "samsung.jpeg",
 ];
 ?>
 
@@ -49,18 +51,14 @@
                     <p>Armazenamento: 256 GB</p>
 
                     <!-- Quantity -->
-                    <div class="quantity-related">
-                        <label for="quantity">Quantidade:</label>
-                        <select id="quantity" name="quantity">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                        </select>
-                    </div>
-
                     <!-- Buttons -->
-                    <div class="product-buttons">
+                    <div class="product-options">
+                        <div class="quantity-related">
+                            <label for="quantity">Quantidade:</label>
+                            <select id="quantity" name="quantity"></select>
+                        </div>
+
+
                         <button class="add-to-cart">ADICIONAR AO CARRINHO</button>
                         <button class="buy-now">COMPRAR AGORA</button>
                     </div>
@@ -119,7 +117,7 @@
                 <div class="carousel">
                     <?php
                     foreach ($imagePaths as $path) {
-                        echo "<img src='images/$path' alt='Produto relacionado'>";
+                        echo "<img class='carousel-item'  src='images/$path' alt='Produto relacionado'>";
                     }
                     ?>
                 </div>
