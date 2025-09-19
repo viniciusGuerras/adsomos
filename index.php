@@ -1,13 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php $imagePaths = [
-    "teste.jpg",
-    "nokia.jpg",
-    "xiaomi.jpeg",
-    "samsung.jpeg",
-    "cell.jpeg",
-    "samsung.jpeg",
+
+<?php
+$product_name = "iPhone 15 Pro Max";
+$product_price = 7299;
+$product_storage = 256;
+$installments = "12x R$ 608,25 sem juros";
+$max_installment = 12;
+$tax_amount = 0.0;
+$taxes = true;
+$main_image = "images/teste.jpg";
+$thumbnails = ["images/teste.jpg", "images/segurado.jpeg", "images/athand.jpeg", "images/athome.jpeg"];
+$imagePaths = ["teste.jpg", "nokia.jpg", "xiaomi.jpeg", "samsung.jpeg", "cell.jpeg", "samsung.jpeg"];
+$available_colors = [
+    ["Bege estranho", "#B0A18F"],
+    ["Titânio", "#FFFFFF"],
+    ["outro1", "#784242"],
+    ["outro2", "#2e2e36"],
+    ["terceiro", "#8d4050ff"]
+];
+
+$specs = [
+    "Tela" => '6,7" Super Retina XDR',
+    "Processador" => "A17 Pro",
+    "Câmeras" => "Traseira tripla 48MP + 12MP + 12MP",
+    "Bateria" => "Até 29h de reprodução de vídeo",
+    "Armazenamento" => "256 GB",
+    "Sistema Operacional" => "iOS 17"
+];
+
+$reviews = [
+    ["author" => "Maria S.", "comment" => "Excelente desempenho e design premium. Vale cada centavo!"],
+    ["author" => "João P.", "comment" => "Bateria dura bastante e câmera impressiona. Recomendo!"],
+    ["author" => "Ana L.", "comment" => "Ótimo aparelho, muito rápido e elegante."]
 ];
 ?>
 
@@ -22,42 +48,65 @@
     <?php include 'components/header.php'; ?>
     <main>
         <div class="main-container">
-            <!-- first part -->
-            <section class="main-section">
-                <div class="main-image">
-                    <img src="images/teste.jpg" id="main-image" alt="">
+            <!-- pictures and thumbnails -->
+            <section class="product-section">
+                <div class="product-gallery">
+                    <img src="<?php echo $main_image?>" id="main-image" alt="">
                     <div class="thumbnails">
-                        <img src="images/teste.jpg" alt="thumb0" class="thumb active" c>
-                        <img src="images/segurado.jpeg" alt="thumb1" class="thumb">
-                        <img src="images/athand.jpeg" alt="thumb2" class="thumb">
-                        <img src="images/athome.jpeg" alt="thumb3" class="thumb">
+                        <?php foreach ($thumbnails as $index => $thumb): ?>
+                            <img src="<?php echo $thumb; ?>" alt="thumb<?php echo $index; ?>"
+                                class="thumb <?php echo $index === 0 ? 'active' : ''; ?>">
+                        <?php endforeach; ?>
                     </div>
                 </div>
                 <!-- Product Details -->
-                <div class="main-content">
-                    <h1>iPhone 15 Pro Max</h1>
-                    <div class="money-related">
-                        <p class="price">R$ 7.299,00</p>
-                        <p class="installments">12x R$ 608,25 sem juros</p>
+                <div class="product-details">
+                    <h1>
+                        <?php echo $product_name ?>
+                    </h1>
+
+                    <div class="pricing">
+                        <p class="price">
+                            R$ <?php echo number_format($product_price, 2, ',', '.'); ?>
+                        </p>
+                        <p class="installments">
+                            <?php
+                            $installment_value = $product_price / $max_installment;
+                            if ($taxes) {
+                                $installment_value += $installment_value * $tax_amount;
+                            }
+                            $installment_value = number_format($installment_value, 2, ',', '.');
+
+                            echo $max_installment . "x de R$ " . $installment_value . ($taxes ? " com juros." : " sem juros.");
+                            ?>
+                        </p>
                     </div>
+
                     <!-- Color Options -->
-                    <div class="color-related">
-                        <p>Cor: <span id="selected-color"></span></p>
+                    <div class="products-colors">
+                        <p>Cor: <span id="selected-color"><?php echo $available_colors[0][0]; ?></span></p>
                         <div class="color-options">
+                            <?php foreach ($available_colors as $index => $color): ?>
+                                <label class="color-swatch <?php echo $index == 0 ? 'selected' : ''; ?>"
+                                    data-color="<?php echo $color[0]; ?>"
+                                    style="background-color: <?php echo $color[1]; ?>;">
+                                    <input type="radio" name="color" value="<?php echo $color[0]; ?>" <?php echo $index === 0 ? 'checked' : ''; ?> style="display:none;">
+                                </label>
+                            <?php endforeach ?>
                         </div>
                     </div>
 
                     <!-- Storage -->
-                    <p>Armazenamento: 256 GB</p>
+                    <p>Armazenamento: <?php echo $product_storage ?> GB</p>
 
-                    <!-- Quantity -->
                     <!-- Buttons -->
-                    <div class="product-options">
-                        <div class="quantity-related">
+                    <div class="product-actions">
+                        <div class="quantity">
                             <label for="quantity">Quantidade:</label>
-                            <select id="quantity" name="quantity"></select>
+                            <select id="quantity" name="quantity">
+                                <!-- dynamically populated by JS -->
+                            </select>
                         </div>
-
 
                         <button class="add-to-cart">ADICIONAR AO CARRINHO</button>
                         <button class="buy-now">COMPRAR AGORA</button>
@@ -73,7 +122,7 @@
                         <h2 class="details-title tab-title" data-target="details-content">Especificações</h2>
                     </div>
                     <!-- Reviews -->
-                    <h2 class="review-title tab-title" data-target="reviews-content">Avaliações (127)</h2>
+                    <h2 class="review-title tab-title" data-target="reviews-content">Avaliações (<?php echo count($reviews); ?>)</h2>
                 </div>
 
                 <!-- Content containers -->
@@ -87,28 +136,19 @@
 
                 <div id="details-content" class="tab-content toggled-hidden">
                     <ul>
-                        <li>Tela: 6,7" Super Retina XDR</li>
-                        <li>Processador: A17 Pro</li>
-                        <li>Câmeras: Traseira tripla 48MP + 12MP + 12MP</li>
-                        <li>Bateria: Até 29h de reprodução de vídeo</li>
-                        <li>Armazenamento: 256 GB</li>
-                        <li>Sistema Operacional: iOS 17</li>
+                        <?php foreach ($specs as $label => $value): ?>
+                            <li><?php echo $label . ": " . $value; ?></li>
+                        <?php endforeach; ?>
                     </ul>
                 </div>
 
                 <div id="reviews-content" class="tab-content toggled-hidden">
-                    <div class="review">
-                        <p><strong>Maria S.</strong> </p>
-                        <p>Excelente desempenho e design premium. Vale cada centavo!</p>
-                    </div>
-                    <div class="review">
-                        <p><strong>João P.</strong> </p>
-                        <p>Bateria dura bastante e câmera impressiona. Recomendo!</p>
-                    </div>
-                    <div class="review">
-                        <p><strong>Ana L.</strong> </p>
-                        <p>Ótimo aparelho, muito rápido e elegante.</p>
-                    </div>
+                    <?php foreach ($reviews as $review): ?>
+                        <div class="review">
+                            <p><strong><?php echo $review["author"]; ?></strong></p>
+                            <p><?php echo $review["comment"]; ?></p>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
             </section>
 

@@ -1,14 +1,5 @@
 const mainImage = document.getElementById('main-image');
 const colorOptionsDiv = document.querySelector('.color-options');
-
-const colors = [
-    ["Bege estranho", "#B0A18F"],
-    ["Titânio", "#FFFFFF"],
-    ["outro1", "#784242"],
-    ["outro2", "#2e2e36"],
-    ["terceiro", "#8d4050ff"]
-];
-
 const thumbs = document.querySelectorAll('.thumb');
 const tabs = document.querySelectorAll('.tab-title');
 const contents = document.querySelectorAll('.tab-content');
@@ -26,10 +17,6 @@ for(let i = 0; i < maxQuantity; i++){
 }
 
 tabs.forEach((tab, idx) => {
-    if (idx == 0) {
-        tab.classList.add('active');
-        contents[0].classList.remove('toggled-hidden');
-    };
     tab.addEventListener('click', () => {
         tabs.forEach(t => t.classList.remove('active'));
         tab.classList.add('active');
@@ -40,7 +27,10 @@ tabs.forEach((tab, idx) => {
         const targetContent = document.getElementById(targetId);
         if (targetContent) targetContent.classList.remove('toggled-hidden');
     });
-
+    if (idx == 0) {
+        tab.classList.add('active');
+        contents[0].classList.remove('toggled-hidden');
+    };
 });
 
 thumbs.forEach(thumb => {
@@ -49,28 +39,6 @@ thumbs.forEach(thumb => {
         thumbs.forEach(t => t.classList.remove('active-thumb'));
         thumb.classList.add('active-thumb');
     });
-});
-
-colors.forEach(([name, hex], idx) => {
-    const label = document.createElement('label');
-    label.classList.add('color-swatch');
-    label.dataset.color = name;
-    label.style.backgroundColor = hex;
-
-    const input = document.createElement('input');
-    input.type = 'radio';
-    input.name = 'color';
-    input.value = name;
-    input.style.display = 'none';
-
-    label.appendChild(input);
-    colorOptionsDiv.appendChild(label);
-
-    if (idx === 0) {
-        selectedColor.innerHTML = name;
-        label.classList.add('selected');
-        input.checked = true;
-    }
 });
 
 colorOptionsDiv.addEventListener('click', (e) => {
