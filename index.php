@@ -6,21 +6,21 @@
 $product_name = "iPhone 15 Pro Max";
 $product_price = 7299;
 $product_storage = 256;
-$installments = "12x R$ 608,25 sem juros";
+
 $max_installment = 12;
 $tax_amount = 0.0;
 $taxes = true;
-$main_image = "images/teste.jpg";
-$thumbnails = ["images/teste.jpg", "images/segurado.jpeg", "images/athand.jpeg", "images/athome.jpeg"];
-$imagePaths = ["teste.jpg", "nokia.jpg", "xiaomi.jpeg", "samsung.jpeg", "cell.jpeg", "samsung.jpeg"];
-$available_colors = [
-    ["Bege estranho", "#B0A18F"],
-    ["Titânio", "#FFFFFF"],
-    ["outro1", "#784242"],
-    ["outro2", "#2e2e36"],
-    ["terceiro", "#8d4050ff"]
-];
 
+$main_image = "images/iphones.png";
+$thumbnails = ["images/iphones.png", "images/segurado.jpeg", "images/athand.jpeg", "images/athome.jpeg"];
+$imagePaths = ["teste.jpg", "nokia.jpg", "xiaomi.jpeg", "samsung.jpeg"];
+$available_colors = [
+    ["Titânio preto", "#1C1C1C"],
+    ["Titânio branco", "#ded6d6ff"],
+    ["Titânio azul", "#232c40ff"],
+    ["Titânio natural", "#A0A0A0"],
+];
+$description = "O iPhone 15 Pro Max apresenta design em titânio natural, tela Super Retina XDR de alta resolução, desempenho incomparável com o chip A17 Pro e sistema avançado de câmeras para fotos e vídeos profissionais.";
 $specs = [
     "Tela" => '6,7" Super Retina XDR',
     "Processador" => "A17 Pro",
@@ -42,6 +42,11 @@ $reviews = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 </head>
 
 <body>
@@ -51,7 +56,7 @@ $reviews = [
             <!-- pictures and thumbnails -->
             <section class="product-section">
                 <div class="product-gallery">
-                    <img src="<?php echo $main_image?>" id="main-image" alt="">
+                    <img src="<?php echo $main_image ?>" id="main-image" alt="">
                     <div class="thumbnails">
                         <?php foreach ($thumbnails as $index => $thumb): ?>
                             <img src="<?php echo $thumb; ?>" alt="thumb<?php echo $index; ?>"
@@ -114,23 +119,28 @@ $reviews = [
                 </div>
             </section>
 
+
             <section class="info-review-container">
                 <!-- Description and Specifications -->
                 <div class="titles">
-                    <div class="info-container">
-                        <h2 class="description-title tab-title" data-target="description-content">Descrição</h2>
-                        <h2 class="details-title tab-title" data-target="details-content">Especificações</h2>
-                    </div>
+                    <!-- desc -->
+                    <h2 class="description-title tab-title" data-target="description-content">Descrição
+                        <i class="fa-solid fa-angle-right"></i>
+                    </h2>
+                    <!-- spcecs -->
+                    <h2 class="details-title tab-title" data-target="details-content">Especificações
+                        <i class="fa-solid fa-angle-right"></i>
+                    </h2>
                     <!-- Reviews -->
-                    <h2 class="review-title tab-title" data-target="reviews-content">Avaliações (<?php echo count($reviews); ?>)</h2>
+                    <h2 class="review-title tab-title" data-target="reviews-content">Avaliações (<?php echo count($reviews); ?>)
+                        <i class="fa-solid fa-angle-right"></i>
+                    </h2>
                 </div>
 
                 <!-- Content containers -->
                 <div id="description-content" class="tab-content toggled-hidden">
                     <p>
-                        O iPhone 15 Pro Max apresenta design em titânio natural, tela Super Retina XDR de alta
-                        resolução, desempenho incomparável com o chip A17 Pro e sistema avançado de câmeras para fotos e
-                        vídeos profissionais.
+                        <?php echo $description ?>
                     </p>
                 </div>
 

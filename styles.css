@@ -1,6 +1,6 @@
 html,
 body {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'outfit', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     height: 100%;
     width: 100%;
     margin: 0;
@@ -27,10 +27,12 @@ footer {
 
 /* -header- */
 header {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
     position: sticky;
     top: 0;
     background-color: white;
     padding: .5rem;
+    z-index: 1000;
 }
 
 header a {
@@ -52,8 +54,9 @@ header a {
 }
 
 .navbar-hamburger {
-    margin-left: 1rem;
+    display: none;
 }
+
 
 /* -header & footer- */
 li {
@@ -64,7 +67,6 @@ li {
 
 /* -main- */
 main {
-    background-color: rgb(236, 234, 234);
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -79,7 +81,7 @@ main {
     background-color: white;
     display: flex;
     flex-direction: column;
-    gap: 3rem
+    gap: 5rem
 }
 
 /* content - main */
@@ -116,7 +118,7 @@ main {
 
 .product-details h1 {
     margin-top: 0;
-    font-weight: normal;
+    font-weight: bold;
     font-size: xx-large;
 }
 
@@ -143,8 +145,15 @@ main {
     height: 30px;
     margin: 5px;
     cursor: pointer;
-    border: 1px solid black;
-    transition: border 0.2s;
+    border-radius: 50%;
+    transition: border 0.5s;
+}
+.color-options label:hover{
+    transform: scale(1.1);
+}
+
+.color-options label:not(:hover){
+    transition: border 0.5s;
 }
 
 /* thumbnails */
@@ -161,14 +170,17 @@ main {
     width: 80px;
     height: 80px;
     object-fit: cover;
-    border: 2px solid transparent;
     cursor: pointer;
     transition: transform 0.3s ease, border 0.3s ease;
+    border-radius: 10px;
+    padding: .5rem;
+    background-color: rgba(186, 136, 227, 0.278);
+    border: 1px solid gray;
+    overflow: hidden;
 }
 
 .thumbnails img:hover {
     transform: scale(1.1);
-    /* smooth zoom effect */
 }
 
 .thumbnails img:not(:hover) {
@@ -180,19 +192,22 @@ main {
     display: flex;
     flex-direction: column;
 }
+
 .product-colors p {
     font-size: large;
 }
+
 .product-colors label.color-swatch {
     width: 40px;
     height: 40px;
     display: inline-block;
     margin: 5px;
     cursor: pointer;
-    border: none;
     box-shadow: 0px 0px 10px 0px #d3d3d39b;
     transition: border 0.2s, transform 0.2s;
+    border-radius: 50%;
 }
+
 .selected {
     transition: .1s ease-in-out;
     outline: 1px solid rgba(0, 0, 0, 0.448);
@@ -211,24 +226,41 @@ main {
     background-color: white;
     font-size: large;
     cursor: pointer;
-    transition: all .2s;
+    transition: transform 0.2s ease;
 }
 
 .product-actions .add-to-cart {
-    background-color: hsl(122, 21%, 47%);
+    border: none;
+    border-radius: 5px;
+    border: 1px solid rgba(128, 128, 128, 0.54);
+    transition: all ease .5s;
+    color: black;
+}
+
+.product-actions .buy-now {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    background-color: rgb(15, 168, 219);
+    border-radius: 5px;
+    border: none;
     color: white;
-}
-
-.product-actions .add-to-cart:hover {
-    background-color: hsl(103, 15%, 32%);
-}
-
-.product-actions .buy-now:hover {
-    background-color: hsl(0, 0%, 94%);
+    transition: all ease .5s;
 }
 
 .product-actions button:first-of-type {
     margin-bottom: .9rem;
+}
+
+.product-actions .add-to-cart:hover {
+    background-color: hsl(0, 4%, 95%);
+}
+
+.product-actions .buy-now:hover {
+    background-color: hsl(206, 67%, 41%);
+}
+
+.product-actions .add-to-cart:active,
+.product-actions .buy-now:active {
+    transform: scale(1.02);
 }
 
 /* -quantity related- */
@@ -261,21 +293,25 @@ main {
 .description-title {
     flex: 1;
     display: flex;
-    flex-direction: column;
 }
 
 .details-title {
     flex: 1;
     display: flex;
-    flex-direction: column;
 }
 
 .tab-title {
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-weight:500;
+    gap: 10px;
 }
 
-.toggled-hidden {
-    display: none;
+.tab-title.active {
+    border: 1px solid #9ba5b486;
+    padding: 1rem;
+    border-radius: 10px;
 }
 
 #details-content ul {
@@ -309,17 +345,18 @@ main {
 
 /* carousel */
 .carousel {
+    width: 100%;
     display: flex;
     gap: 1rem;
     overflow-x: auto;
     overflow-y: hidden;
     white-space: nowrap;
     padding: 1rem 0;
+    justify-content: space-around;
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
     scrollbar-width: thin;
     outline: none;
-    width: 100%;
 }
 
 .carousel-item {
@@ -357,13 +394,12 @@ main {
         display: none;
     }
 
-    /* Main container */
     .main-container {
         width: 90%;
         padding: 2rem;
+
     }
 
-    /* Main section */
     .product-section {
         flex-direction: row;
         gap: 2rem;
@@ -380,7 +416,7 @@ main {
         height: auto;
         object-fit: contain;
     }
-    
+
     .product-details {
         flex: 1;
     }
@@ -393,10 +429,15 @@ main {
         font-size: x-large;
     }
 
-    /* Thumbnails */
+    /* thumbnails */
     .thumbnails img {
+        border-radius: 10px;
         width: 80px;
         height: 80px;
+    }
+
+    .thumbnails img.thumb{
+        border-radius: 10px;
     }
 
     /* Product buttons */
@@ -407,6 +448,7 @@ main {
 
     /* Titles */
     .titles {
+        display: flex;
         gap: 2rem;
     }
 
@@ -431,8 +473,26 @@ main {
         display: none;
     }
 
+    .navbar-container {
+        margin: 0;
+        padding: 0;
+    }
+
     .navbar-hamburger {
+        margin-left: auto;
         display: block;
+    }
+
+    .hamburger-icon {
+        width: 30px;
+        height: 3px;
+        background-color: black;
+        border-radius: 10px;
+        margin: 6px 0;
+    }
+
+    .drawer-menu {
+        transition: right 0.3s ease;
     }
 
     header {
@@ -452,6 +512,10 @@ main {
         justify-content: flex-start;
         overflow: visible;
         height: 100%;
+    }
+
+    .titles h2 {
+        font-size: medium;
     }
 
     .product-gallery img {
@@ -505,10 +569,10 @@ main {
 
 /* Small Mobile (≤480px) */
 @media (max-width: 480px) {
-    .product-gallery img{
+    .product-gallery img {
         height: 60%;
     }
-    
+
     .product-details h1 {
         font-size: large;
     }
@@ -517,19 +581,28 @@ main {
         font-size: large;
     }
 
+    .titles h2 {
+        font-size: small;
+    }
+
     .titles {
         flex-direction: column;
-        gap: 1rem;
+        gap: .1rem;
     }
 
     .carousel-item {
         max-width: 150px;
     }
-    
-    .thumbnails img{
+
+    .thumbnails img {
         min-width: 30px;
         min-height: 30px;
         width: 60px;
         height: 60px;
     }
+}
+
+/* utils */
+.toggled-hidden {
+    display: none;
 }
