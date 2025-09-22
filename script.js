@@ -16,14 +16,9 @@ window.addEventListener('resize', () => {
         drawerMenu.classList.add('toggled-hidden');
     }
 });
+
 hamburguerMenu.addEventListener('click', () => {
-    const sets = new Set(drawerMenu.classList);
-    if (sets.has("toggled-hidden")) {
-        drawerMenu.classList.remove("toggled-hidden");
-    }
-    else {
-        drawerMenu.classList.add("toggled-hidden");
-    }
+    drawerMenu.classList.toggle('toggled-hidden');
 })
 
 for (let i = 0; i < maxQuantity; i++) {
@@ -36,9 +31,11 @@ for (let i = 0; i < maxQuantity; i++) {
 tabs.forEach((tab, idx) => {
     tab.addEventListener('click', () => {
         const wasActive = tab.classList.contains('active');
+        const downIcon = document.createElement('i');
 
         tabs.forEach(t => {
             t.classList.remove('active');
+
             const existingIcon = t.querySelector('i');
             if (existingIcon) existingIcon.remove();
 
@@ -57,14 +54,12 @@ tabs.forEach((tab, idx) => {
         const existingIcon = tab.querySelector('i');
         if (existingIcon) existingIcon.remove();
 
-        const downIcon = document.createElement('i');
         downIcon.classList.add('fa-solid', 'fa-chevron-down');
         tab.appendChild(downIcon);
 
         contents.forEach(c => c.classList.add('toggled-hidden'));
         const targetContent = document.getElementById(tab.dataset.target);
         if (targetContent) targetContent.classList.remove('toggled-hidden');
-
     });
 });
 

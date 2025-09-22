@@ -8,7 +8,7 @@
 <body>
     <h1>Olá! Bem-vindo ao teste da Adsomos do Vini! eu sou o Vini!</h1>
     <h2>
-        Nesta página, eu não escrevi nada, foi só pra testar a funcionalidade
+        Nesta página, eu não escrevi nada foi só pra testar a funcionalidade.
     </h2>
     <p>
         tenha um bom dia
