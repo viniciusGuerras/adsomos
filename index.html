@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar-container">
+            <div class="navbar-logo">
+                <a href="">LOGO</a>
+            </div>
+            <ul class="navbar-ul">
+                <li><a href="index.php">HOME</a></li>
+                <li><a href="shop.php">LOJA</a></li>
+                <li><a href="components/about.php">SOBRE</a></li>
+                <li><a href="components/contact.php">CONTATO</a></li>
+            </ul>
+            <div class="navbar-hamburger">
+                <div class="hamburger-icon"></div>
+                <div class="hamburger-icon"></div>
+                <div class="hamburger-icon"></div>
+            </div>
+        </nav>
+        <div class="drawer-menu toggled-hidden" id="drawer-menu">
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="shop.html">LOJA</a></li>
+                <li><a href="components/about.php">SOBRE</a></li>
+                <li><a href="components/contact.php">CONTATO</a></li>
+            </ul>
+        </div>
+        <div class="drawer-dark-background">
+        </div>
+    </header>
+    <main>
+        <div class="main-container">
+            <!-- Pictures And Thumbnails -->
+            <section class="product-section">
+                <div class="product-gallery">
+                    <img src="images/iphones.png" id="main-image" alt="">
+                    <div class="thumbnails">
+                        <img src="images/iphones.png" alt="thumb0" class="thumb active">
+                        <img src="images/phone3_4.png" alt="thumb1" class="thumb ">
+                        <img src="images/phonefront.png" alt="thumb2" class="thumb ">
+                    </div>
+                </div>
+
+                <!-- Product Details -->
+                <div class="product-details">
+                    <h1>
+                        iPhone 15 Pro Max </h1>
+
+                    <div class="pricing">
+                        <p class="price">
+                            R$7.299,00 </p>
+                        <p class="installments">
+                            12x de R$608,25 com juros. </p>
+                    </div>
+
+                    <!-- Color Options -->
+                    <div class="products-colors">
+                        <p>Cor: <span id="selected-color">Titânio preto</span></p>
+                        <div class="color-options">
+                            <label class="color-swatch selected" data-color="Titânio preto"
+                                style="background-color: #1C1C1C;">
+                                <input type="radio" name="color" value="Titânio preto" checked style="display:none">
+                            </label>
+                            <label class="color-swatch " data-color="Titânio branco"
+                                style="background-color: #ded6d6ff;">
+                                <input type="radio" name="color" value="Titânio branco" style="display:none">
+                            </label>
+                            <label class="color-swatch " data-color="Titânio azul" style="background-color: #232c40ff;">
+                                <input type="radio" name="color" value="Titânio azul" style="display:none">
+                            </label>
+                            <label class="color-swatch " data-color="Titânio natural"
+                                style="background-color: #A0A0A0;">
+                                <input type="radio" name="color" value="Titânio natural" style="display:none">
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Storage -->
+                    <p>Armazenamento: 256 GB</p>
+
+                    <!-- Buttons -->
+                    <div class="product-actions">
+                        <div class="quantity">
+                            <label for="quantity">Quantidade:</label>
+                            <select id="quantity" name="quantity">
+                                <!-- dynamically populated by JS -->
+                            </select>
+                        </div>
+
+                        <button class="add-to-cart">ADICIONAR AO CARRINHO</button>
+                        <button class="buy-now">COMPRAR AGORA</button>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="info-review-container">
+                <!-- Description and Specifications -->
+                <div class="titles">
+                    <!-- desc -->
+                    <h2 class="description-title tab-title" data-target="description-content">Descrição
+                        <i class="fa-solid fa-angle-right"></i>
+                    </h2>
+                    <!-- specs -->
+                    <h2 class="details-title tab-title" data-target="details-content">Especificações
+                        <i class="fa-solid fa-angle-right"></i>
+                    </h2>
+                    <!-- Reviews -->
+                    <h2 class="review-title tab-title" data-target="reviews-content">Avaliações
+                        (3)
+                        <i class="fa-solid fa-angle-right"></i>
+                    </h2>
+                </div>
+
+                <!-- Content containers -->
+                <div id="description-content" class="tab-content toggled-hidden">
+                    <p>
+                        O iPhone 15 Pro Max apresenta design em titânio natural, tela Super Retina XDR de alta
+                        resolução, desempenho incomparável com o chip A17 Pro e sistema avançado de câmeras para fotos e
+                        vídeos profissionais. </p>
+                </div>
+
+                <div id="details-content" class="tab-content toggled-hidden">
+                    <ul>
+                        <li>Tela: 6,7" Super Retina XDR</li>
+                        <li>Processador: A17 Pro</li>
+                        <li>Câmeras: Traseira tripla 48MP + 12MP + 12MP</li>
+                        <li>Bateria: Até 29h de reprodução de vídeo</li>
+                        <li>Armazenamento: 256 GB</li>
+                        <li>Sistema Operacional: iOS 17</li>
+                    </ul>
+                </div>
+
+                <div id="reviews-content" class="tab-content toggled-hidden">
+                    <div class="review">
+                        <p><strong>Maria S.</strong></p>
+                        <p>Excelente desempenho e design premium. Vale cada centavo!</p>
+                    </div>
+                    <div class="review">
+                        <p><strong>João P.</strong></p>
+                        <p>Bateria dura bastante e câmera impressiona. Recomendo!</p>
+                    </div>
+                    <div class="review">
+                        <p><strong>Ana L.</strong></p>
+                        <p>Ótimo aparelho, muito rápido e elegante.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="related-container">
+                <h2>Produtos Relacionados</h2>
+                <div class="carousel">
+                    <img class='carousel-item' src='images/samsung.jpg' alt='Produto relacionado'><img
+                        class='carousel-item' src='images/thinkpad.jpg' alt='Produto relacionado'><img
+                        class='carousel-item' src='images/macbook.jpeg' alt='Produto relacionado'><img
+                        class='carousel-item' src='images/ipad.png' alt='Produto relacionado'>
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            <ul class="footer-ul">
+                <li>SOBRE NÓS</li>
+                <li>INFORMAÇÕES</li>
+                <li>ATENDIMENTO</li>
+                <li>MINHA CONTA</li>
+            </ul>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

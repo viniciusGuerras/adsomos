@@ -294,11 +294,13 @@ main {
 }
 
 .tab-title {
+    border: 1px solid transparent;
     cursor: pointer;
     display: flex;
     align-items: center;
     font-weight: 500;
     gap: 10px;
+    transition: border 0.3s ease, padding 0.3s ease ;
 }
 
 .tab-title.active {
