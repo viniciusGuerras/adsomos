@@ -563,8 +563,12 @@ main {
 
 /* Small Mobile */
 @media (max-width: 480px) {
+    .main-container{
+        gap: 1rem;
+    }
+    
     .product-gallery img {
-        height: 60%;
+        height: 80%;
     }
 
     .product-details h1 {
@@ -576,7 +580,7 @@ main {
     }
 
     .titles h2 {
-        font-size: small;
+        font-size: medium;
     }
 
     .titles {
