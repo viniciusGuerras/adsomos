@@ -107,7 +107,7 @@ main {
 }
 
 .product-gallery img {
-    width: 100%;
+    width: 80%;
     object-fit: contain;
     justify-self: center;
     transition: 0.3s ease;
